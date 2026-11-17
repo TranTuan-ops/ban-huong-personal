@@ -23,6 +23,8 @@ dist/
 .env.*.local
 back-end/.env
 front-end/.env.local
+.env.*
+!.env.example
 
 # Allow example env files
 !*.example
