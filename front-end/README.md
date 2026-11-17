@@ -1,80 +1,82 @@
-# Bắt đầu với Create React App
+# 🎨 Frontend Client - Bản Hương E-Commerce
 
-Dự án này được khởi tạo bằng [Create React App](https://github.com/facebook/create-react-app).
+This project is the frontend client for the **Bản Hương** essential oil e-commerce platform, bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and customized with [@craco/craco](https://craco.js.org/).
 
-## Các lệnh có sẵn
+---
 
-Trong thư mục dự án, bạn có thể chạy:
+## 🚀 Available Scripts
+
+In the `front-end` project directory, you can run:
 
 ### `npm start`
 
-Chạy ứng dụng ở chế độ phát triển.
-Mở [http://localhost:3000](http://localhost:3000) để xem trong trình duyệt của bạn.
+Runs the app in development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Trang sẽ tự động tải lại khi bạn thay đổi mã.
-Bạn cũng có thể thấy các lỗi lint trong console.
+The page will automatically reload when you make edits.<br />
+You will also see any lint and compile errors in the console.
 
 ---
 
 ### `npm test`
 
-Khởi chạy trình chạy test ở chế độ theo dõi tương tác.
-Xem thêm tại [Chạy test](https://facebook.github.io/create-react-app/docs/running-tests).
+Launches the test runner in interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ---
 
 ### `npm run build`
 
-Build ứng dụng cho môi trường production vào thư mục `build`.
-Lệnh này sẽ:
+Builds the application for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-* Tối ưu mã React ở chế độ production.
-* Nén mã và thêm hash vào tên file để tăng hiệu suất tải.
-
-Ứng dụng sau khi build đã sẵn sàng để triển khai.
-Xem thêm tại [Triển khai](https://facebook.github.io/create-react-app/docs/deployment).
+The build is minified and filenames include hashes.<br />
+Your app is ready to be deployed! See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for details.
 
 ---
 
 ### `npm run eject`
 
-**Lưu ý:** Đây là thao tác **một chiều**. Một khi đã eject thì không thể quay lại!
+**Note: this is a one-way operation. Once you `eject`, you cannot go back!**
 
-Lệnh này sẽ:
-
-* Sao chép tất cả file cấu hình và dependencies liên quan (webpack, Babel, ESLint, v.v.) vào dự án của bạn.
-* Cho phép bạn toàn quyền chỉnh sửa cấu hình.
-
-Hầu hết các dự án nhỏ và vừa không cần `eject`.
+Copies all configuration files and transitive dependencies (Webpack, Babel, ESLint, etc.) directly into your project so you have full control over them. Most medium-sized projects do not need to eject thanks to CRACO.
 
 ---
 
-## Tìm hiểu thêm
+## ⚙️ Environment Variables
 
-* [Tài liệu Create React App](https://facebook.github.io/create-react-app/docs/getting-started)
-* [Tài liệu React](https://reactjs.org/)
+Create or update [.env.local](file:///.env.local) in the `front-end` directory:
 
----
-
-## 📦 Giới thiệu các dependency
-
-| Tên gói                               | Phiên bản | Mô tả                                                     |
-| ------------------------------------- | --------- | --------------------------------------------------------- |
-| **@ckeditor/ckeditor5-build-classic** | ^41.4.2   | Phiên bản build sẵn của CKEditor 5 với giao diện Classic. |
-| **@ckeditor/ckeditor5-react**         | ^11.0.0   | Wrapper giúp tích hợp CKEditor 5 vào React.               |
-| **@craco/craco**                      | ^7.1.0    | Tùy chỉnh cấu hình CRA mà không cần eject.                |
-| **@testing-library/dom**              | ^10.4.0   | Thư viện kiểm thử thao tác DOM.                           |
-| **@testing-library/jest-dom**         | ^6.6.3    | Matcher bổ sung cho Jest (như `.toBeInTheDocument()`).    |
-| **@testing-library/react**            | ^16.3.0   | Công cụ test component React.                             |
-| **@testing-library/user-event**       | ^13.5.0   | Mô phỏng hành vi người dùng trong test.                   |
-| **antd**                              | ^5.26.6   | Thư viện UI Ant Design.                                   |
-| **axios**                             | ^1.11.0   | HTTP client để gọi API.                                   |
-| **lucide-react**                      | ^0.525.0  | Bộ icon SVG cho React.                                    |
-| **react**                             | ^19.1.0   | Thư viện chính để xây dựng UI.                            |
-| **react-dom**                         | ^19.1.0   | Render UI React vào DOM.                                  |
-| **react-router-dom**                  | ^7.7.0    | Thư viện định tuyến cho React.                            |
-| **react-scripts**                     | 5.0.1     | Bộ script mặc định của CRA.                               |
-| **web-vitals**                        | ^2.1.4    | Đo lường hiệu suất web.                                   |
+```env
+REACT_APP_API_URL=http://localhost:5000
+```
 
 ---
 
+## 📦 Key Dependencies & Libraries
+
+| Package Name | Version | Description |
+| :--- | :--- | :--- |
+| **react** / **react-dom** | ^19.1.0 | Core React 19 UI framework |
+| **@craco/craco** | ^7.1.0 | CRA configuration override without ejecting |
+| **react-router-dom** | ^7.7.0 | Declarative client-side routing |
+| **antd** | ^5.26.6 | Comprehensive Ant Design UI component library |
+| **axios** | ^1.12.2 | Promise-based HTTP client for API requests |
+| **recharts** | ^3.2.1 | Composable charting library for admin analytics dashboards |
+| **@payos/payos-checkout** | ^1.0.8 | Embedded PayOS payment checkout integration |
+| **@ckeditor/ckeditor5-react** | ^11.0.0 | Rich text WYSIWYG editor for admin blog management |
+| **@react-oauth/google** | ^0.12.2 | Google OAuth 2.0 authentication integration |
+| **i18next** / **react-i18next** | ^21.10.0 | Internationalization framework for multi-language support (EN / VI) |
+| **socket.io-client** | ^4.8.1 | Real-time WebSocket connection client |
+| **lucide-react** / **react-icons** | Latest | Modern SVG icon sets |
+| **react-dropzone** | ^14.3.8 | Drag-and-drop file/image upload support |
+| **qrcode.react** | ^4.2.0 | Dynamic QR code generator component |
+| **jwt-decode** | ^4.0.0 | Decoding JWT tokens on the client side |
+
+---
+
+## 📚 Learn More
+
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)
+- [React Documentation](https://react.dev/)
+- [Ant Design Documentation](https://ant.design/docs/react/introduce)

@@ -1,5 +1,8 @@
 import express from "express";
-import passport from "../config/passportConfig.js";
+import passport, {
+  googleClientIdConfigured,
+  googleOAuthConfigured,
+} from "../config/passportConfig.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize"; // 👈 thêm vào
@@ -20,18 +23,41 @@ import User from "../models/user.model.js";
 
 const router = express.Router();
 
+const requireGoogleClientId = (req, res, next) => {
+  if (!googleClientIdConfigured) {
+    return res.status(503).json({
+      message: "Set GOOGLE_CLIENT_ID in back-end/.env to enable Google login.",
+    });
+  }
+
+  next();
+};
+
+const requireGoogleOAuth = (req, res, next) => {
+  if (!googleOAuthConfigured) {
+    return res.status(503).json({
+      message:
+        "Set GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and GOOGLE_CALLBACK_URL in back-end/.env to enable Google OAuth.",
+    });
+  }
+
+  next();
+};
+
 /**
  * ========== Google Login ==========
  */
-router.post("/google", loginWithGoogle);
+router.post("/google", requireGoogleClientId, loginWithGoogle);
 
 router.get(
   "/google",
+  requireGoogleOAuth,
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 router.get(
   "/google/callback",
+  requireGoogleOAuth,
   passport.authenticate("google", {
     session: false,
     failureRedirect: "/login",

@@ -349,6 +349,20 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "Email và mật khẩu là bắt buộc" });
     }
 
+    const mailUser = process.env.MAIL_USER?.trim();
+    const mailPass = process.env.MAIL_PASS?.trim();
+    if (
+      !mailUser ||
+      !mailPass ||
+      mailUser.toLowerCase().startsWith("your_") ||
+      mailPass.toLowerCase().startsWith("your_")
+    ) {
+      return res.status(503).json({
+        message:
+          "Đăng ký cần email xác minh. Hãy cấu hình MAIL_USER và MAIL_PASS trong back-end/.env.",
+      });
+    }
+
     // ✅ Kiểm tra email đã tồn tại
     const existingEmail = await User.findOne({ where: { email } });
     if (existingEmail)

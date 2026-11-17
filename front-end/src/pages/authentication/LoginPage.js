@@ -22,6 +22,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const { Title, Text } = Typography;
 
 export default function LoginPage() {
@@ -130,7 +131,7 @@ export default function LoginPage() {
   };
 
   return (
-    <GoogleOAuthProvider clientId="677644332847-gj96iobsvcsqlnno7ea8dlv3nsqt4gfr.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <div
         style={{
           minHeight: "100vh",

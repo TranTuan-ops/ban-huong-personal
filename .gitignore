@@ -12,3 +12,20 @@
 
 pkg/
 node_modules/
+build/
+dist/
+.idea/
+.vscode/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+back-end/.env
+front-end/.env.local
+
+# Allow example env files
+!*.example
+
+# IDE
+.idea/

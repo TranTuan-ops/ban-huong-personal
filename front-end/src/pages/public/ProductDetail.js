@@ -23,7 +23,7 @@ import { useTranslation } from "react-i18next";
 import ProductFeedback from "../../components/ProductFeedback";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-const { Title} = Typography;
+const { Title, Text } = Typography;
 
 export default function ProductDetail() {
   const { t } = useTranslation();
