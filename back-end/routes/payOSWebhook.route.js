@@ -19,7 +19,14 @@ function verifyPayOSSignature(req) {
   const rawBody = req.rawBody;
   const checksumKey = process.env.PAYOS_CHECKSUM_KEY;
 
-  if (!signature || !rawBody) return false;
+  if (
+    !signature ||
+    !rawBody ||
+    !checksumKey ||
+    checksumKey.toLowerCase().startsWith("your_")
+  ) {
+    return false;
+  }
 
   const expected = crypto
     .createHmac("sha256", checksumKey)

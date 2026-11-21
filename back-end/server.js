@@ -32,7 +32,7 @@ import adminPostRoutes from "./routes/adminPost.routes.js";
 import adminStatsRoutes from "./routes/adminStats.routes.js";
 import subscriberRoutes from "./routes/subscriber.route.js";
 import faqRoutes from "./routes/faq.routes.js";
-import { payOS } from "./config/payOS.js";
+import { payOS, payOSConfigured } from "./config/payOS.js";
 import payOSWebhookRoutes from "./routes/payOSWebhook.route.js";
 
 // Load environment variables
@@ -104,6 +104,12 @@ app.use("/api/subscribers", subscriberRoutes);
 // PayOS - Create Payment Link
 app.post("/api/create-payment-link", async (req, res) => {
   try {
+    if (!payOSConfigured || !payOS) {
+      return res.status(503).json({
+        error: "PayOS is not configured",
+      });
+    }
+
     const { amount, description, items, orderId } = req.body; // thêm orderId nếu có
 
     console.log("📦 Body gửi PayOS:", { amount, description, items, orderId });

@@ -4,7 +4,7 @@ import OrderItem from "../models/orderItem.model.js";
 import Product from "../models/product.model.js";
 import ProductImage from "../models/productimage.model.js";
 import Cart from "../models/cart.model.js";
-import { payOS } from "../config/payOS.js"; // instance PayOS đã setup
+import { payOS, payOSConfigured } from "../config/payOS.js";
 import { sequelize } from "../config/db.js"; // sequelize instance
 
 // ----------------------------
@@ -184,6 +184,13 @@ export const createOrder = async (req, res) => {
 
     // 5️⃣ Nếu PayOS → tạo link thanh toán
     if (paymentMethod === "PayOS") {
+      if (!payOSConfigured || !payOS) {
+        await t.rollback();
+        return res.status(503).json({
+          error: "PayOS chưa được cấu hình",
+        });
+      }
+
       const orderCode = Number(String(Date.now()).slice(-6));
       const payOSResponse = await payOS.paymentRequests.create({
         orderCode,
