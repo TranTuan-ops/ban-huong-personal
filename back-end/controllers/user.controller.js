@@ -220,7 +220,7 @@ export const forgotPassword = async (req, res) => {
     user.resetPasswordExpires = new Date(expireTime);
     await user.save();
 
-    const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+    const resetLink = `${process.env.YOUR_DOMAIN || "http://localhost:3000"}/reset-password?token=${token}`;
 
     // Gửi email
     const transporter = nodemailer.createTransport({

@@ -77,7 +77,7 @@ router.get(
       { expiresIn: "1d" }
     );
 
-    res.redirect(`http://localhost:3000?token=${token}`);
+    res.redirect(`${process.env.YOUR_DOMAIN || "http://localhost:3000"}?token=${token}`);
   }
 );
 
